@@ -1,0 +1,18 @@
+.columnForm {
+    text-align: center;
+    padding: 10px;
+}
+
+.span {
+    margin: 5px;
+}
+
+@media (max-width: 767px) {
+    .columnForm {
+        display: block;
+    }
+
+    .span {
+        display: block;
+    }
+} 
