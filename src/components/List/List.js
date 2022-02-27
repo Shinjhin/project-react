@@ -4,6 +4,7 @@ import styles from './List.module.scss'
 // import shortid from 'shortid';
 import { useSelector } from 'react-redux';
 import ColumnForm from '../ColumnForm/ColumnForm.js';
+import { getAllColumns } from '../../redux/store';
 
 const List = () => {
 
@@ -49,7 +50,8 @@ const List = () => {
 
 	};
   */
-		const columns = useSelector(state => state.columns)
+		//const columns = useSelector(state => state.columns)
+		const columns = useSelector(getAllColumns)
   	console.log(columns);
 
     return (
