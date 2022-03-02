@@ -10,4 +10,21 @@
     display: flex;
     justify-content: space-between;
     font-weight: bold;
-} 
+
+}
+.icon{
+    margin: 0;
+    padding: 0;
+}
+.buttonFavorite{
+    background-color: white;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    width: 20px;
+}
+.active{
+    color: red;
+}  
