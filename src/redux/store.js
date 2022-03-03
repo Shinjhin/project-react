@@ -1,12 +1,37 @@
-import { createStore } from 'redux';
-import shortid from 'shortid';
-import strContains from '../utils/strContains';
-import initialState from './initialState';
+import { createStore, combineReducers } from 'redux';
+import initialState from './initialState.js';
+import listsReducer from './listRedux';
+import columnsReducer from './columnRedux';
+import cardsReducer from './cardRedux';
+import searchStringReducer from './searchStringRedux';
 
-//const reducer = (state, action) => {
-//  if(action.type === 'ADD_COLUMN') return { ...state, columns: [...state.columns, action.newColumn]}
-//  return state;
-// }
+
+
+const subreducers = {
+  lists: listsReducer,
+  columns: columnsReducer,
+  cards: cardsReducer,
+  searchString: searchStringReducer
+};    
+
+const reducer = combineReducers(subreducers)
+
+const store = createStore(
+  reducer,
+  initialState,
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+);
+
+export default store;
+
+
+/*const reducer = (state, action) => {
+  if(action.type === 'ADD_COLUMN') return { ...state, columns: [...state.columns, action.newColumn]}
+  return state;
+}
+
+ SZYBSZY I SPOSÓB NA MNIEJSZE PRZYKŁADY
+
 const reducer = (state, action) => {
   switch(action.type) {
     case 'ADD_COLUMN':
@@ -27,8 +52,9 @@ const reducer = (state, action) => {
     default:
       return state;
   }
-};
+};*/
 
+/*
 // selectors
 export const getFilteredCards = ({cards, searchString}, columnId) => cards.filter(card => card.columnId === columnId && strContains(card.title, searchString.searchString) )
 export const getFilteredIsFavoriteCards = ({ cards }) => cards.filter(card => card.isFavorite === true)
@@ -43,11 +69,4 @@ export const addCard = payload => ({ type: 'ADD_CARD', payload})
 export const updateSearchString = payload => ({ type: 'UPDATE_SEARCHSTRING', payload})
 export const addList = payload => ({ type: 'ADD_LIST', payload })
 export const getToggleCardFavorite = payload => ({ type: 'TOGGLE_CARD_FAVORITE', payload })
-
-const store = createStore(
-  reducer,
-  initialState,
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-);
-
-export default store;
+*/

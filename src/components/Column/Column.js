@@ -3,7 +3,7 @@ import CardForm from '../CardForm/CardForm';
 import styles from './Column.module.scss'
 import 'font-awesome/css/font-awesome.min.css';
 import { useSelector } from 'react-redux';
-import { getFilteredCards } from '../../redux/store';
+import { getFilteredCards } from '../../redux/cardRedux';
 
 const Column = props => {
     //const searchString = useSelector(state => state.searchString.searchString)
@@ -15,7 +15,7 @@ const Column = props => {
         <article className={styles.column}>
             <h1 className={styles.title}><span className={styles.icon + ' fa fa-' + props.icon}></span>{props.title}</h1>
             <ul className={styles.cards}>
-            {cards.map(card => <Card key={card.id} title={card.title} columnId={card.columnId} cardId={card.id}/>)}
+            {cards.map(card => <Card key={card.id} title={card.title} /*columnId={card.columnId}*/ cardId={card.id}/>)}
             </ul>
             <CardForm columnId={props.id}/>
         </article>
