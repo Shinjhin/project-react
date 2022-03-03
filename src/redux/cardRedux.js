@@ -5,6 +5,7 @@ import strContains from "../utils/strContains"
 const createActionName = actionName => `app/cards/${actionName}`
 const ADD_CARD = createActionName('ADD_CARD')
 const TOGGLE_CARD_FAVORITE = createActionName('TOGGLE_CARD_FAVORITE')
+const REMOVE_CARD = createActionName('REMOVE_CARD')
 
 //selectors
 export const getFilteredCards = ({cards, searchString}, columnId) => cards.filter(card => card.columnId === columnId && strContains(card.title, searchString.searchString) )
@@ -13,7 +14,7 @@ export const getFilteredIsFavoriteCards = ({ cards }) => cards.filter(card => ca
 //action creators
 export const addCard = payload => ({ type: ADD_CARD, payload })
 export const getToggleCardFavorite = payload => ({ type: TOGGLE_CARD_FAVORITE, payload })
-
+export const removeCard = payload => ({ type: REMOVE_CARD, payload})
 
 const cardsReducer = (statePart = [], action) => {
   switch (action.type){
@@ -24,6 +25,10 @@ const cardsReducer = (statePart = [], action) => {
       return statePart.map(card =>  (card.id === action.payload) ? { ...card, isFavorite: !card.isFavorite } : card)
       default:
         return statePart
+
+    case REMOVE_CARD:
+      return statePart.filter(card => (card.id !== action.payload))
+      
   }
 }
 

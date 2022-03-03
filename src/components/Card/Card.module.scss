@@ -13,18 +13,22 @@
 
 }
 .icon{
-    margin: 0;
-    padding: 0;
+    margin: 0px;
+    padding: 0px;
 }
 .buttonFavorite{
     background-color: white;
     border: none;
-    cursor: pointer;
-    display: flex;
-    justify-content: center;
-    align-content: center;
-    width: 20px;
+    cursor: pointer; 
+    padding-left: 45%;
 }
+
+.buttonRemove {
+    cursor: pointer;
+    border: none;
+    background-color: white;
+}
+    
 .active{
     color: red;
 }  
